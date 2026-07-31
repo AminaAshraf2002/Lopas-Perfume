@@ -245,7 +245,7 @@
 
 .tall-card {
   height: 700px;
-  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9)), url('/src/assets/banner1.png');
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9)), url('../assets/banner1.png');
   background-size: cover;
   background-position: center;
 }
@@ -387,7 +387,7 @@
   background: #eee;
   border-radius: 20px;
   position: relative;
-  background-image: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/src/assets/banner2.png');
+  background-image: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('../assets/banner2.png');
   background-size: cover;
   background-position: center;
 }
@@ -531,7 +531,7 @@
 
 .own-line-image {
   height: 700px;
-  background: url('/src/assets/bottle.png');
+  background: url('../assets/bottle.png');
   background-size: cover;
   background-position: center;
   border-radius: 20px;

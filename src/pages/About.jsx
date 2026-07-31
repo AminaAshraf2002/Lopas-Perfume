@@ -3,6 +3,15 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import aboutHeroImg from '../assets/about_hero.png';
+import collImg from '../assets/coll.png';
+import stage1Img from '../assets/stage_1_compounding.png';
+import stage2Img from '../assets/stage_2_maceration.png';
+import stage3Img from '../assets/stage_3_filtration.png';
+import stage4Img from '../assets/stage_4_filling.png';
+import mat1Img from '../assets/material_1.png';
+import mat2Img from '../assets/material_2.png';
+import mat3Img from '../assets/material_3.png';
 import './About.css';
 import './Contact.css';
 
@@ -53,7 +62,7 @@ export default function About() {
             className="contact-hero-overlay"
             style={{
               backgroundImage:
-                'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.35) 100%), url("/src/assets/about_hero.png")',
+                `linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.35) 100%), url(${aboutHeroImg})`,
               filter: 'none'
             }}
           ></div>
@@ -82,7 +91,7 @@ export default function About() {
       </section>
 
       {/* 1. 01 — THE HOUSE (CREAM SPLIT LAYOUT) */}
-      <section className="about-cream-section" style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/src/assets/coll.png")', backgroundSize: 'cover', backgroundPosition: 'center', padding: '8rem 4rem', color: '#fff' }}>
+      <section className="about-cream-section" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(${collImg})`, backgroundSize: 'cover', backgroundPosition: 'center', padding: '8rem 4rem', color: '#fff' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', gap: '4rem', alignItems: 'flex-start' }} data-aos="fade-up">
           {/* Left Side */}
           <div style={{ flex: '1' }}>
@@ -134,7 +143,7 @@ export default function About() {
 
         <div className="lumiere-bestsellers-grid">
           {/* Tall Card Left - Compounding */}
-          <div className="lumiere-card tall-card" data-aos="fade-right" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url("/src/assets/stage_1_compounding.png")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' }}>
+          <div className="lumiere-card tall-card" data-aos="fade-right" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(${stage1Img})`, backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' }}>
             <div className="card-top">
               <h3 style={{ color: '#bda27e' }}>01</h3>
               <p style={{ color: '#fff' }}>Stage 1</p>
@@ -158,7 +167,7 @@ export default function About() {
             </div>
 
             {/* Middle Card - Maceration */}
-            <div className="lumiere-card wide-card" data-aos="fade-left" style={{ marginBottom: '2rem', height: '300px', backgroundImage: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url("/src/assets/stage_2_maceration.png")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' }}>
+            <div className="lumiere-card wide-card" data-aos="fade-left" style={{ marginBottom: '2rem', height: '300px', backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(${stage2Img})`, backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' }}>
               <div className="card-top">
                 <h3 style={{ color: '#bda27e' }}>02</h3>
               </div>
@@ -173,7 +182,7 @@ export default function About() {
 
             {/* Two Cards Bottom Right - Filtration & Filling */}
             <div className="lumiere-cards-row">
-              <div className="lumiere-card small-card" data-aos="fade-up" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url("/src/assets/stage_3_filtration.png")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' }}>
+              <div className="lumiere-card small-card" data-aos="fade-up" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(${stage3Img})`, backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' }}>
                 <div className="card-top"><h3 style={{ color: '#bda27e' }}>03</h3></div>
                 <div className="card-bottom">
                   <div>
@@ -184,7 +193,7 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="lumiere-card small-card" data-aos="fade-up" data-aos-delay="100" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url("/src/assets/stage_4_filling.png")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' }}>
+              <div className="lumiere-card small-card" data-aos="fade-up" data-aos-delay="100" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(${stage4Img})`, backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' }}>
                 <div className="card-top"><h3 style={{ color: '#bda27e' }}>04</h3></div>
                 <div className="card-bottom">
                   <div>
@@ -215,14 +224,14 @@ export default function About() {
 
           <div className="editorial-grid-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '2rem', alignItems: 'center' }}>
             <div style={{ gridColumn: '1 / 7' }} data-aos="fade-right">
-              <img src="/src/assets/material_1.png" alt="Raw Ingredients" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+              <img src={mat1Img} alt="Raw Ingredients" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
             </div>
             <div style={{ gridColumn: '8 / 13', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
               <div data-aos="fade-up" data-aos-delay="100" style={{ alignSelf: 'flex-end', width: '80%' }}>
-                <img src="/src/assets/material_2.png" alt="Saffron and Iris" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                <img src={mat2Img} alt="Saffron and Iris" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
               </div>
               <div data-aos="fade-up" data-aos-delay="200" style={{ alignSelf: 'flex-start', width: '70%', marginLeft: '-20%' }}>
-                <img src="/src/assets/material_3.png" alt="Amber Pump Bottle" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                <img src={mat3Img} alt="Amber Pump Bottle" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
               </div>
             </div>
           </div>

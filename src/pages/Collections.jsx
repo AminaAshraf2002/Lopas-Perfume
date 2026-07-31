@@ -10,6 +10,7 @@ import atelierImg from '../assets/banner1.png';
 import processImg from '../assets/banner2.png';
 import bottleImg from '../assets/bottle.png';
 import collectImg from '../assets/collect.png';
+import aboImg from '../assets/abo.png';
 import './Collections.css';
 import './Contact.css';
 
@@ -188,7 +189,7 @@ export default function Collections() {
             className="contact-hero-overlay"
             style={{
               backgroundImage:
-                'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.35) 100%), url("/src/assets/abo.png")'
+                `linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.35) 100%), url(${aboImg})`
             }}
           ></div>
         </div>

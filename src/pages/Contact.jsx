@@ -4,6 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import TrustStrip from '../components/TrustStrip';
+import contactImg from '../assets/contact.png';
+import bannerImg from '../assets/banner.png';
 import './Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -111,7 +113,7 @@ export default function Contact() {
             className="contact-hero-overlay"
             style={{
               backgroundImage:
-                'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.35) 100%), url("/src/assets/contact.png")'
+                `linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.35) 100%), url(${contactImg})`
             }}
           ></div>
         </div>
@@ -210,7 +212,7 @@ export default function Contact() {
 
           <div className="contact-form-right" data-aos="fade-left">
             <div className="contact-image-wrapper">
-              <img src="/src/assets/banner.png" alt="LOPAZ Perfume" className="contact-feature-img" />
+              <img src={bannerImg} alt="LOPAZ Perfume" className="contact-feature-img" />
             </div>
           </div>
         </div>
