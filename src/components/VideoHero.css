@@ -5,7 +5,7 @@
   height: 100vh;
   background-color: #0c120e; /* Deep dark green/black like reference */
   overflow: hidden;
-  color: #ebd9be; /* Gold/Beige text color */
+  color: #ffffff; /* White text color */
 }
 
 /* Background texture/pattern to mimic subtle floral lines */
@@ -91,7 +91,7 @@
   font-family: var(--font-serif);
   font-size: 3rem;
   font-weight: 400;
-  color: #ebd9be;
+  color: #ffffff;
   margin-bottom: 0.5rem;
   max-width: 600px;
 }
@@ -100,7 +100,7 @@
   font-family: var(--font-sans);
   font-size: 1.2rem;
   font-weight: 600;
-  color: #c9bcae;
+  color: #ffffff;
   margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -111,7 +111,7 @@
   font-size: 1rem;
   max-width: 450px;
   line-height: 1.6;
-  color: #ebd9be;
+  color: #ffffff;
   margin-bottom: 3rem;
 }
 
