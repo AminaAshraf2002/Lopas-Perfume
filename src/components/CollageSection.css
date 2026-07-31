@@ -1,0 +1,341 @@
+.collage-section {
+  background-color: #ffffff;
+}
+
+.collage-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1rem;
+  height: 700px;
+}
+
+.collage-left {
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.collage-left img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.collage-left:hover img {
+  transform: scale(1.05);
+}
+
+.collage-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  min-height: 0;
+  min-width: 0;
+}
+
+.collage-right-top,
+.collage-right-bottom {
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.collage-right-top img,
+.collage-right-bottom img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.collage-right-top:hover img,
+.collage-right-bottom:hover img {
+  transform: scale(1.05);
+}
+
+.shop-now-pill {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 10;
+}
+
+.shop-now-pill:hover {
+  transform: translateY(-2px);
+  background-color: #f0f0f0;
+}
+
+.collage-cards-section {
+  margin-top: 5rem;
+}
+
+/* 4 Product Cards */
+.collage-overlay-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 20;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+.overlay-card {
+  background-color: #ffffff;
+ 
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 380px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.overlay-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.overlay-card-img-wrapper {
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65%;
+  width: 100%;
+}
+
+.overlay-card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay-card-info {
+  display: flex;
+  flex-direction: column;
+  height: 35%;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.overlay-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.overlay-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.overlay-card-subtitle {
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.overlay-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.overlay-card-price {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+}
+
+.overlay-card-add-btn {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.overlay-card-add-btn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Responsive Collage Section */
+@media (max-width: 1600px) {
+  .collage-overlay-cards {
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  .collage-overlay-cards {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+    padding: 0 2rem;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .collage-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 1.5rem;
+  }
+  .collage-left {
+    height: 400px;
+  }
+  .collage-right {
+    height: 400px;
+    grid-template-rows: 1fr 1fr;
+  }
+  .collage-overlay-cards {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .collage-section {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0;
+  }
+  .collage-section .container {
+    padding: 0 0.5rem;
+  }
+  .collage-grid {
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .collage-left {
+    height: 350px;
+  }
+  .collage-right {
+    height: 200px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0.5rem;
+  }
+  .shop-now-pill {
+    bottom: 0.5rem;
+    left: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.6rem;
+  }
+  .collage-overlay-cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-top: 1rem;
+    padding: 0 0 1rem 0;
+    gap: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .collage-overlay-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .overlay-card {
+    flex: 0 0 75%;
+    height: 350px;
+    scroll-snap-align: start;
+  }
+  .overlay-card-info {
+    padding: 0.8rem;
+  }
+  .overlay-card-title {
+    font-size: 0.75rem;
+  }
+  .overlay-card-price {
+    font-size: 0.8rem;
+  }
+  
+  .slider-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .slider-btn {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    pointer-events: auto;
+  }
+
+  .slider-btn:active {
+    transform: scale(0.95);
+    background-color: #333333;
+  }
+}
+
+.hide-on-desktop {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .hide-on-desktop {
+    display: flex;
+  }
+}

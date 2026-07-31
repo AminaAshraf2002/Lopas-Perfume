@@ -1,0 +1,17 @@
+.trust-strip-container {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.trust-item {
+  white-space: nowrap;
+}
+
+.trust-bullet {
+  color: #bda27e;
+}

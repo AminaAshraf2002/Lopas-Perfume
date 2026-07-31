@@ -1,0 +1,91 @@
+.production-section {
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.production-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+}
+
+.production-text-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.text-orange {
+  color:  #b187548e;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.about-desc {
+  max-width: 500px;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.btn-about {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-about:hover {
+  background-color: #333333;
+}
+
+.production-image-side {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.production-image {
+  width: 100%;
+  max-width: 450px;
+  height: 430px; /* Match the tall image aspect ratio from the design */
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 900px) {
+  .production-container {
+    flex-direction: column;
+  }
+  
+  .production-text-side {
+    padding-right: 0;
+    margin-bottom: 3rem;
+  }
+  
+  .production-image-side {
+    justify-content: center;
+  }
+}

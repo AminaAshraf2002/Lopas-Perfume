@@ -1,0 +1,135 @@
+/* --- MANUFACTURING SHOWCASE STYLES --- */
+
+.ms-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: transparent;
+}
+
+.ms-section {
+  position: relative;
+  width: 100%;
+  padding: 8rem 0; /* Add padding instead of forced heights to remove empty space */
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Subtle gradient overlay to ensure text is readable */
+.ms-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, transparent 30%, rgba(5,3,1,0.8) 100%);
+  z-index: 1;
+}
+
+.ms-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Text Blocks */
+.ms-left-text {
+  max-width: 450px;
+  color: #f1ede5;
+}
+
+.ms-right-text {
+  max-width: 350px;
+  text-align: right;
+  color: #ffffff;
+}
+
+.ms-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #ffffff; /* Golden color to match the bottle */
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.ms-line {
+  width: 120px;
+  height: 1px;
+  background-color: rgba(229, 179, 103, 0.4);
+  margin: 1rem 0;
+}
+
+.ms-subtitle {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: #bca082;
+}
+
+.ms-desc-small {
+  font-size: 1.15rem; /* Increased font size */
+  line-height: 1.6;
+  opacity: 0.9;
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+.ms-desc-large {
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  margin-top: 1.5rem;
+  font-family: var(--font-sans);
+}
+
+/* Indicators on the left edge */
+.ms-indicator {
+  position: absolute;
+  left: 4rem;
+  bottom: 4rem;
+  z-index: 2;
+  color: #888;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+}
+
+.ms-indicator strong {
+  color: #e5b367;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .ms-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .ms-right-text {
+    text-align: left;
+    margin-top: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ms-section {
+    height: auto;
+    padding: 6rem 0;
+  }
+  .ms-content {
+    padding: 0 2rem;
+  }
+  .ms-indicator {
+    left: 2rem;
+    bottom: 2rem;
+  }
+}

@@ -1,0 +1,107 @@
+.process-cards-section {
+  background-color: #fdfdfc;
+  padding: 2rem 0 8rem 0; /* Reduced top padding */
+  margin-top: -80px;
+}
+
+.process-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 4rem;
+}
+
+.process-card {
+  border: 1px solid #f0f0f0;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  color: #fff; /* Ensure all text inside is white */
+}
+
+/* Dark overlay for text readability */
+.process-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  z-index: 1;
+}
+
+/* Make sure content is above overlay */
+.process-icon, .process-step-num, .process-step-title, .process-step-desc {
+  position: relative;
+  z-index: 2;
+  color: #fff; /* Force white color for all text elements */
+}
+
+/* Staggering the cards vertically to match screenshot exactly */
+.card-1 {
+  height: 380px;
+  margin-top: 0;
+}
+
+.card-2 {
+  height: 340px;
+  margin-top: 40px;
+}
+
+.card-3 {
+  height: 300px;
+  margin-top: 80px;
+}
+
+.card-4 {
+  height: 260px;
+  margin-top: 120px;
+}
+
+.process-icon {
+  margin-bottom: 2rem;
+}
+
+.process-step-num {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.process-step-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.process-step-desc {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .process-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .card-1, .card-2, .card-3, .card-4 {
+    height: auto;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .process-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

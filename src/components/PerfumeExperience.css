@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+.experience-container {
+  will-change: transform;
+}
+
+.bg-theme {
+  background-color: var(--bg-color);
+}
+
+.bottle-img {
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+  max-height: 65vh;
+  z-index: 2;
+  position: relative;
+  margin-top: 70px;
+}
+
+.bee-img {
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+  transform-origin: center center;
+  width: 120px;
+  z-index: 3;
+  top: 30%;
+  left: -50px;
+  transform: rotate(-15deg);
+}
+
+.watermark {
+  user-select: none;
+  margin-top: -220px;
+}
+
+.watermark-container {
+  z-index: 0;
+  top: -10%;
+}
+
+.watermark-text {
+  font-size: 12vw;
+  white-space: nowrap;
+  color: #b1875427;
+  letter-spacing: 0.10em;
+  font-weight: 100;
+}
+
+.experience-z-index {
+  z-index: 1;
+}
+
+.hero-text-container {
+  width: 100%;
+  max-width: 450px;
+  margin-left: 6%;
+  margin-top: 220px;
+}
+
+.hero-headline {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 200;
+  line-height: 1.1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #000000d4;
+}
+
+.word {
+  padding-right: 0.15em;
+  padding-left: 0.02em;
+}
+
+.hero-headline i {
+  font-size: 2.5rem;
+  font-weight: 300;
+  font-style: italic;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+}
+
+.hero-headline>span {
+  font-size: 2.8rem;
+  font-weight: 400;
+  display: inline-block;
+  margin-top: 0.2rem;
+}
+
+.hero-desc {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.shop-btn {
+  background-color: #2b2b2b;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.8rem;
+}
+
+.hero-section {
+  padding-bottom: 5vh;
+}
+
+.detail-section {
+  padding-bottom: 5vh;
+}
+
+.detail-section-container {
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.detail-panel {
+  width: 28%;
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+}
+
+.marquee-content {
+  display: flex;
+  width: max-content;
+  gap: 4rem;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.spacing-text {
+  letter-spacing: 0.1em;
+}
+
+.detail-heading {
+  font-size: 2rem;
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+
+.detail-desc {
+  line-height: 1.6;
+}
+
+.divider-mb-1 {
+  margin: 0 0 1rem 0;
+}
+
+.bottom-footer {
+  z-index: 1;
+  letter-spacing: 0.05em;
+}
+
+.detail-panel {
+  pointer-events: none;
+}
+
+.detail-panel[style*="opacity: 1"] {
+  pointer-events: auto;
+}
+
+@media (max-width: 1024px) {
+  .watermark-text {
+    font-size: 16vw;
+  }
+
+  .bottle-img {
+    max-height: 50vh;
+  }
+
+  .detail-panel {
+    width: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .watermark-text {
+    font-size: 18vw; 
+    margin-top: -25vh;
+  }
+
+  .bottle-scroll-container {
+    margin-top: 15vh;
+  }
+
+  .bottle-img {
+    max-height: 48vh; 
+    max-width: none;
+    width: auto;
+    margin-top: -50px;
+    margin-left: 0;
+  }
+
+  .hero-text-container {
+    margin-top: 5vh;
+    margin-left: 5%;
+    padding: 0;
+    text-align: left;
+    max-width: 58%;
+    z-index: 10;
+  }
+
+  .hero-headline {
+    font-size: 1.4rem;
+  }
+
+  .hero-headline i {
+    font-size: 1.4rem;
+  }
+
+  .hero-headline > span {
+    font-size: 2rem;
+  }
+
+  .hero-desc {
+    font-size: 0.80rem;
+    margin-bottom: -1rem;
+  }
+
+  .shop-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.75rem;
+  }
+
+  .detail-section-container {
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    padding-top: -30px;
+    padding-bottom: 8rem;
+    height: auto !important;
+    min-height: 100vh;
+    margin-top: 20px;
+  }
+
+  .detail-panel {
+    width: 90%;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .left-panel {
+    margin-bottom: 50vh; 
+  }
+
+  .bottom-footer {
+    bottom: 0;
+    margin-top: -6rem;
+    position: relative !important;
+  }
+}

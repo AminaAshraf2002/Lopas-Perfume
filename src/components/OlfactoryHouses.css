@@ -1,0 +1,214 @@
+/* --- CLEAN WHITE PRODUCT GRID --- */
+
+.oh-white-section {
+  background-color: #faf9f7; /* Very light, warm off-white */
+  padding: 8rem 0;
+  color: #1a1a1a;
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+.oh-white-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* Header Area */
+.oh-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+}
+
+.oh-header-left {
+  max-width: 700px;
+}
+
+.oh-eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+.oh-title {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.oh-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 550px;
+}
+
+.oh-header-right {
+  display: flex;
+  align-items: flex-end;
+  padding-top: 4rem; /* Align with bottom of title */
+}
+
+.oh-browse-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 0.25rem;
+  transition: opacity 0.3s ease;
+}
+
+.oh-browse-link:hover {
+  opacity: 0.6;
+}
+
+/* Horizontal Card Grid */
+.oh-cards-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+  
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.oh-cards-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.oh-cards-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+}
+
+/* Individual Cards */
+.oh-card {
+  width: 260px; /* Decreased card width */
+  display: flex;
+  flex-direction: column;
+}
+
+.oh-card-image-wrapper {
+  width: 100%;
+  height: 280px; /* Decreased image height */
+  background-color: #f1f0ee; /* Subtle card background */
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.oh-card:hover .oh-card-image-wrapper {
+  transform: translateY(-5px);
+}
+
+.oh-card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.oh-card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 0.5rem;
+}
+
+.oh-card-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.oh-card-id {
+  font-size: 0.7rem;
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.oh-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.oh-card-desc {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.oh-card-add-btn {
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.oh-card-add-btn:hover {
+  border-color: #1a1a1a;
+  color: #1a1a1a;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .oh-header-row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .oh-header-right {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .oh-white-section {
+    padding: 4rem 0;
+  }
+  
+  .oh-white-container {
+    padding: 0 2rem;
+  }
+  
+  .oh-title {
+    font-size: 2.5rem;
+  }
+  
+  .oh-card {
+    width: 280px;
+  }
+  
+  .oh-card-image-wrapper {
+    height: 350px;
+  }
+}

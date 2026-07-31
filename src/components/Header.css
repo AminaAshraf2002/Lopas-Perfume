@@ -1,0 +1,9 @@
+/* The header styles remain in App.css for now, but we add the active state */
+.header-link.active {
+  color: var(--color-primary, #bda27e) !important;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+}

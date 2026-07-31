@@ -1,0 +1,25 @@
+.black-marquee-wrapper {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 1.5rem 0;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+}
+
+.black-marquee-content {
+  display: flex;
+  gap: 3rem;
+  animation: scrollMarquee 20s linear infinite;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
