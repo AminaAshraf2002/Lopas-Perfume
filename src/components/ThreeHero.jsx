@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ThreeHero.css';
 
-import video1 from '../assets/IMG.mp4';
+import video1 from '../assets/IMG.MP4';
 
 gsap.registerPlugin(ScrollTrigger);
 
