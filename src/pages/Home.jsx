@@ -1,5 +1,5 @@
 import React from 'react';
-import VideoHero from '../components/VideoHero';
+import ThreeHero from '../components/ThreeHero';
 import PerfumeExperience from '../components/PerfumeExperience';
 import PerfumeInProduction from '../components/PerfumeInProduction';
 import BlackMarquee from '../components/BlackMarquee';
@@ -19,7 +19,7 @@ import blaaBg from '../assets/blaa.png';
 export default function Home() {
   return (
     <>
-      <VideoHero />
+      <ThreeHero />
       <PerfumeExperience />
       <PerfumeInProduction />
       <BlackMarquee />

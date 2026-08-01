@@ -1,0 +1,190 @@
+/* ThreeHero.css */
+.th-hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #050806;
+  overflow: hidden;
+}
+
+.th-canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Fallback styles */
+.th-mobile-fallback {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #1f1b15 0%, #050806 100%);
+  position: relative;
+}
+.th-mobile-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-radial-gradient(
+    circle at center,
+    transparent 0,
+    transparent 40px,
+    rgba(235, 217, 190, 0.03) 40px,
+    rgba(235, 217, 190, 0.03) 41px
+  );
+}
+
+/* Text Container */
+.th-text-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  padding-left: 10%;
+}
+
+.th-text-overlay {
+  position: absolute;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.th-text-overlay.th-text-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.th-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #a39682;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.th-heading {
+  margin: 0 0 1.5rem 0;
+  line-height: 1.05;
+}
+
+.th-heading-line1 {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.th-heading-line2 {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-style: italic;
+  font-weight: 300;
+  color: #ebd9be;
+  margin-left: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.th-subtext {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 400px;
+}
+
+/* Sound toggle button */
+.th-sound-toggle {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  z-index: 50;
+  padding: 12px 24px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  color: #ebd9be;
+  border: 1px solid rgba(235, 217, 190, 0.3);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.th-sound-toggle:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* Minimal UI */
+.th-progress-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.th-scroll-cue {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #ebd9be;
+  text-transform: uppercase;
+}
+
+.th-progress-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, #ebd9be, transparent);
+  animation: pulse-line 2s infinite ease-in-out;
+}
+
+@keyframes pulse-line {
+  0% {
+    transform: scaleY(1);
+    opacity: 1;
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1.5);
+    opacity: 0.5;
+    transform-origin: top;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+    transform-origin: top;
+  }
+}
+
+@media (max-width: 768px) {
+  .th-text-container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .th-heading-line2 {
+    margin-left: 0;
+  }
+}
