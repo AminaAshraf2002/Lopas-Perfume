@@ -378,3 +378,101 @@ body {
   background: var(--color-white);
   color: var(--color-text-main);
 }
+/* =========================================
+   MOBILE RESPONSIVE OVERRIDES
+   ========================================= */
+@media (max-width: 600px) {
+  .ex-hero-full {
+    min-height: 80vh;
+    padding: 6rem 1.25rem 3rem 1.25rem;
+    align-items: flex-end;
+  }
+
+  .ex-hero-title-full {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .ex-hero-desc-full {
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .ex-btn-outline-full {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.7rem;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .ex-split-image,
+  .ex-split-text {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .ex-huge-num {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .ex-family-title {
+    font-size: 1.15rem;
+    letter-spacing: 0.06em;
+  }
+
+  .ex-family-desc {
+    font-size: 0.85rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .ex-product-section {
+    padding: 3rem 1.25rem;
+  }
+
+  .ex-product-grid {
+    gap: 1.25rem;
+  }
+
+  .ex-product-image-box {
+    height: 240px;
+    margin-bottom: 1rem;
+  }
+
+  .ex-bottom-banner {
+    width: calc(100% - 1.5rem);
+    margin: 0.75rem;
+    border-radius: 20px;
+    min-height: 50vh;
+  }
+
+  .ex-banner-content {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .ex-banner-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  .ex-banner-desc {
+    font-size: 0.85rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .ex-btn-outline-light {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.9rem 1.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .ex-product-image-box {
+    height: 200px;
+  }
+
+  .ex-huge-num {
+    font-size: 2.5rem;
+  }
+}

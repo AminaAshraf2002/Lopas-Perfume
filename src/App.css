@@ -243,6 +243,11 @@
   .header-link {
     margin: 0 0 1.5rem 0;
     font-size: 1.1rem;
+    color: #1a1a1a !important; /* Force sidebar links to be black on mobile, overriding header-transparent */
+  }
+  
+  .header-link.active {
+    color: #c4aa84 !important; /* Gold active color for mobile menu items */
   }
 
   .search-bar-container {
