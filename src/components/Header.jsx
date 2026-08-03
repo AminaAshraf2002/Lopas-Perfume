@@ -71,7 +71,7 @@ export default function Header() {
       
       <div className="logo-container">
         <Link to="/" className="logo-link">
-          <img src={logoImg} alt="LOPAZ" className="header-logo-image" style={{ height: '80px', filter: 'invert(1)' }} />
+          <img src={logoImg} alt="LOPAZ" className="header-logo-image" style={{ height: '80px' }} />
         </Link>
       </div>
 

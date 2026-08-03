@@ -207,14 +207,15 @@ export default function ThreeHero() {
     }
   }, [isMobile, videoElement]);
 
-  // Unlock video decoder on mobile browsers (especially iOS Safari) by playing and pausing it
+  // Unlock video decoder on mobile browsers (especially iOS Safari) by playing it with playbackRate = 0
   useEffect(() => {
     if (!videoElement) return;
 
     const unlock = () => {
+      videoElement.playbackRate = 0;
       videoElement.play()
         .then(() => {
-          videoElement.pause();
+          // Success! Keep it in the "playing" state at 0 speed so iOS updates the WebGL texture
           window.removeEventListener('touchstart', unlock);
           window.removeEventListener('click', unlock);
         })
@@ -302,6 +303,7 @@ export default function ThreeHero() {
         muted
         loop
         playsInline
+        autoPlay
         preload="auto"
         style={{ position: 'absolute', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
       />

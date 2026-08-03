@@ -1,12 +1,13 @@
 .parallax-cta-section {
   position: relative;
-  height: 60vh;
   min-height: 400px;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   margin-top: 80px;
+  padding: 40px 0;
 }
 
 .parallax-bg {
@@ -30,26 +31,43 @@
   text-align: center;
   color: #ffffff;
   padding: 0 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.parallax-tagline {
+  color: #bda27e;
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: clamp(0.95rem, 3.2vw, 1.5rem);
 }
 
 .parallax-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.8rem;
   font-weight: 500;
   margin-bottom: 1rem;
   letter-spacing: 0.05em;
+  font-size: clamp(1.4rem, 6vw, 2.8rem);
 }
 
 .parallax-subtitle {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
   font-weight: 300;
   line-height: 1.6;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   opacity: 0.9;
+  font-size: clamp(0.8rem, 2.8vw, 1rem);
+}
+
+.parallax-btn-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .parallax-shop-btn {
@@ -64,6 +82,8 @@
   letter-spacing: 0.1em;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .parallax-shop-btn:hover {
@@ -71,11 +91,81 @@
   color: #1a1a1a;
 }
 
+.parallax-whatsapp-link {
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 2px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Tablet and below */
 @media (max-width: 768px) {
   .parallax-bg {
-    background-attachment: scroll; /* Mobile fix for fixed bg issues */
+    background-attachment: scroll; /* fixed bg is unreliable on mobile browsers */
   }
+
+  .parallax-tagline {
+    font-size: 0.95rem !important; /* Scale down tagline on mobile */
+    margin-bottom: 0.75rem;
+  }
+
   .parallax-title {
-    font-size: 2.2rem;
+    font-size: 1.8rem !important; /* Scale down title size for phone viewports */
+    line-height: 1.2 !important;
+    margin-bottom: 0.75rem;
+  }
+
+  .parallax-subtitle {
+    font-size: 0.8rem !important; /* Scale down subtitle paragraph font size */
+    line-height: 1.5 !important;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .parallax-cta-section {
+    height: auto;
+    min-height: unset;
+    padding: 50px 0;
+  }
+
+  .parallax-subtitle {
+    margin-bottom: 1.25rem;
+  }
+
+  .parallax-btn-row {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .parallax-shop-btn {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .parallax-whatsapp-link {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .parallax-title {
+    font-size: 1.25rem;
+  }
+
+  .parallax-tagline {
+    font-size: 0.85rem;
+  }
+
+  .parallax-subtitle {
+    font-size: 0.75rem;
   }
 }

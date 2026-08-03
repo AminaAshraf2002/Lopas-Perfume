@@ -15,6 +15,15 @@
   transition: transform 0.3s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
 }
 
+.header-logo-image {
+  filter: invert(0);
+  transition: filter 0.3s ease;
+}
+
+.header-transparent .header-logo-image {
+  filter: invert(1);
+}
+
 .header-transparent {
   background-color: transparent !important;
   border-bottom-color: transparent !important;
@@ -205,14 +214,19 @@
     justify-content: space-between;
   }
   
-  .mobile-menu-btn {
+  .app-header .mobile-menu-btn,
+  .header-transparent .mobile-menu-btn {
     display: block;
     z-index: 200;
-    color: #000 !important; /* Force hamburger menu to be black even on transparent headers */
+    color: #000 !important; /* Force hamburger / close button to be black on mobile */
   }
   
   .logo-container {
     justify-content: center;
+  }
+
+  .header-logo-image {
+    filter: invert(0) !important; /* Force black logo on mobile viewports */
   }
 
   .header-left {
@@ -240,13 +254,13 @@
     left: 0;
   }
   
-  .header-link {
+  .app-header .nav-links .header-link {
     margin: 0 0 1.5rem 0;
     font-size: 1.1rem;
     color: #1a1a1a !important; /* Force sidebar links to be black on mobile, overriding header-transparent */
   }
   
-  .header-link.active {
+  .app-header .nav-links .header-link.active {
     color: #c4aa84 !important; /* Gold active color for mobile menu items */
   }
 

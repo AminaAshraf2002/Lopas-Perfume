@@ -173,3 +173,45 @@
     align-self: center;
   }
 }
+
+@media (max-width: 768px) {
+  .sg-section {
+    padding: 3.5rem 0;
+  }
+
+  .sg-container {
+    padding: 2rem 1.25rem;
+    margin: 0 0.4rem; /* Decreased even more as requested */
+    gap: 2.5rem;
+    border-radius: 16px;
+  }
+
+  .sg-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .sg-desc {
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .sg-btn {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.65rem;
+  }
+
+  .sg-card {
+    width: 250px; /* Scale down card width for mobile viewports */
+  }
+
+  .sg-card-image {
+    height: 250px; /* Scale down card image height */
+    margin-bottom: 1rem;
+  }
+
+  .sg-card-title {
+    font-size: 1rem;
+  }
+}

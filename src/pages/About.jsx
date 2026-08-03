@@ -26,7 +26,7 @@ export default function About() {
         ></div>
         <h1 className="sg-hero-title">
           <span className="hero-title-line">
-            <span className="hero-text-reveal" style={{ animationDelay: '0.2s' }}>lopaz</span>
+            <span className="hero-text-reveal" style={{ animationDelay: '0.2s' }}>about us</span>
           </span>
         </h1>
       </section>

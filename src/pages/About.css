@@ -50,13 +50,19 @@
   position: relative;
   z-index: 2;
   font-family: var(--font-serif);
-  font-size: clamp(6rem, 15vw, 15rem);
+  font-size: clamp(3rem, 8vw, 8rem);
   font-weight: 400;
   color: #ffffff !important;
   margin: 0;
   line-height: 0.8;
   letter-spacing: -0.02em;
-  transform: translateY(20%);
+  transform: translateY(5%);
+  margin-bottom: 160px;
+}
+
+
+.sg-hero-title span {
+  color: #ffffff !important; /* Force the text-reveal spans to be white, overriding general body text colors */
 }
 
 /* COMMON SECTION */
@@ -469,6 +475,29 @@
     gap: 1rem;
   }
 
+  .sg-pg-left {
+    height: 340px;
+  }
+
+  .sg-pg-right {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .sg-pg-right-top,
+  .sg-pg-right-bottom {
+    flex: 1;
+    height: 170px;
+  }
+
+  .sg-btn-overlay {
+    bottom: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.65rem;
+    white-space: nowrap;
+  }
+
   .sg-complex {
     margin-top: 2rem;
     padding-bottom: 4rem;
@@ -511,10 +540,20 @@
     font-size: clamp(1.6rem, 6vw, 2.2rem);
   }
 
-  .sg-pg-left,
+  .sg-pg-left {
+    height: 300px;
+  }
+
   .sg-pg-right-top,
   .sg-pg-right-bottom {
-    height: 240px;
+    height: 140px;
+  }
+
+  .sg-btn-overlay {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.6rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
   }
 
   .sg-dark-title {
