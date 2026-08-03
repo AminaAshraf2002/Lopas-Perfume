@@ -28,7 +28,7 @@
 
 .oh-eyebrow {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -38,7 +38,7 @@
 
 .oh-title {
   font-family: var(--font-serif);
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 400;
   line-height: 1.1;
   color: #1a1a1a;
@@ -46,7 +46,7 @@
 }
 
 .oh-desc {
-  font-size: 1rem;
+  font-size: .9rem;
   line-height: 1.6;
   color: #555;
   max-width: 550px;
@@ -59,7 +59,7 @@
 }
 
 .oh-browse-link {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;

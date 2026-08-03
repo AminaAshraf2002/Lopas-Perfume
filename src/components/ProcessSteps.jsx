@@ -1,25 +1,12 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './ProcessSteps.css';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-import bg1 from '../assets/process_1.png';
-import bg2 from '../assets/process_2.png';
-import bg3 from '../assets/process_3.png';
-import bg4 from '../assets/process_4.png';
-
-gsap.registerPlugin(ScrollTrigger);
+import bgImg from '../assets/process.jpeg'; 
 
 export default function ProcessSteps() {
-  const containerRef = useRef(null);
-
-  const steps = [
-    { 
-      num: 'Step 01', 
-      title: 'Briefing', 
-      desc: 'Consultation on brand positioning and olfactory direction.',
-      bg: bg1,
+  const promises = [
+    {
+      title: "Step 01: Briefing",
+      desc: "Consultation on brand positioning and olfactory direction.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -27,22 +14,18 @@ export default function ProcessSteps() {
         </svg>
       )
     },
-    { 
-      num: 'Step 02', 
-      title: 'Chemistry', 
-      desc: 'R&D Lab trials and stability testing for international compliance.',
-      bg: bg2,
+    {
+      title: "Step 02: Chemistry",
+      desc: "R&D Lab trials and stability testing for international compliance.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path d="M10 2v7.31M14 9.31V2M8.5 2h7M14 9.31L22.61 21A1 1 0 0 1 21.75 22H2.25a1 1 0 0 1-.86-1.5L10 9.31V2" />
         </svg>
       )
     },
-    { 
-      num: 'Step 03', 
-      title: 'Bottling', 
-      desc: 'Precision filling and artisanal assembly in our dust-free facility.',
-      bg: bg3,
+    {
+      title: "Step 03: Bottling",
+      desc: "Precision filling and artisanal assembly in our dust-free facility.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
@@ -51,11 +34,9 @@ export default function ProcessSteps() {
         </svg>
       )
     },
-    { 
-      num: 'Step 04', 
-      title: 'Logistics', 
-      desc: 'Export-ready packaging and global shipping documentation.',
-      bg: bg4,
+    {
+      title: "Step 04: Logistics",
+      desc: "Export-ready packaging and global shipping documentation.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <rect x="1" y="3" width="15" height="13" />
@@ -67,35 +48,31 @@ export default function ProcessSteps() {
     }
   ];
 
-  useGSAP(() => {
-    gsap.from('.process-card', {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top 70%'
-      },
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.15,
-      ease: 'power3.out'
-    });
-  }, { scope: containerRef });
-
   return (
-    <section ref={containerRef} className="process-cards-section py-24 bg-[#fdfdfc]">
-      <div className="container max-w-7xl mx-auto px-6">
+    <section className="promise-section sg-page">
+      <div className="promise-container max-w-7xl mx-auto">
         
-        <div className="process-cards-grid">
-          {steps.map((step, index) => (
-            <div key={index} className={`process-card card-${index + 1}`} style={{ backgroundImage: `url(${step.bg})` }}>
-              <div className="process-icon mb-6">
-                {step.icon}
+        {/* Left Side: Contained Image */}
+        <div className="promise-left-container">
+          <div className="promise-image-wrapper">
+            <img src={bgImg} alt="Process" className="promise-image" />
+          </div>
+        </div>
+
+        {/* Right Side: The Process */}
+        <div className="promise-right">
+          <span className="promise-eyebrow">OUR PROCESS</span>
+          <div className="promise-list">
+            {promises.map((item, idx) => (
+              <div key={idx} className="promise-item">
+                <div className="promise-icon">{item.icon}</div>
+                <div className="promise-text">
+                  <h4 className="promise-item-title">{item.title}</h4>
+                  <p className="promise-item-desc">{item.desc}</p>
+                </div>
               </div>
-              <span className="process-step-num">{step.num}</span>
-              <h4 className="process-step-title">{step.title}</h4>
-              <p className="process-step-desc text-secondary">{step.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
       </div>

@@ -1,106 +1,63 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './OlfactoryEcosystem.css';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import zoneA from '../assets/zone_a.png';
-import zoneB from '../assets/zone_b.png';
-import zoneC from '../assets/zone_c.png';
-
-gsap.registerPlugin(ScrollTrigger);
+import img1 from '../assets/Citrus.png';
+import img2 from '../assets/Heart.png';
+import img3 from '../assets/Base0.png';
+import img4 from '../assets/Solvents.png';
+import img5 from '../assets/musk.png';
 
 export default function OlfactoryEcosystem() {
-  const containerRef = useRef(null);
-
-  useGSAP(() => {
-    gsap.from('.eco-header > *', {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top 80%'
-      },
-      y: 20,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.1,
-      ease: 'power3.out'
-    });
-
-    gsap.from('.eco-layer-block', {
-      scrollTrigger: {
-        trigger: '.eco-diagram',
-        start: 'top 75%'
-      },
-      scaleY: 0,
-      transformOrigin: 'bottom',
-      opacity: 0,
-      duration: 1.5,
-      stagger: 0.2,
-      ease: 'power3.inOut'
-    });
-
-    gsap.from('.eco-text-item', {
-      scrollTrigger: {
-        trigger: '.eco-diagram',
-        start: 'top 60%'
-      },
-      x: (index) => (index % 2 === 0 ? -30 : 30),
-      opacity: 0,
-      duration: 1,
-      stagger: 0.15,
-      ease: 'power2.out',
-      delay: 0.5
-    });
-  }, { scope: containerRef });
+  const ingredients = [
+    {
+      id: 1,
+      image: img1,
+      title: "TOP NOTES",
+      desc: "Citrus and herbaceous molecules that define the first 15 minutes of experience.",
+      label: "Volatile Impact"
+    },
+    {
+      id: 2,
+      image: img2,
+      title: "HEART NOTES",
+      desc: "Floral and spicy compounds forming the soul of the fragrance for 4-6 hours.",
+      label: "Core Identity"
+    },
+    {
+      id: 3,
+      image: img3,
+      title: "BASE NOTES",
+      desc: "Heavy molecules like Musks and Resins providing longevity and sillage.",
+      label: "Structural Foundation"
+    },
+    {
+      id: 4,
+      image: img4,
+      title: "SOLVENTS",
+      desc: "Denatured ethanol of 99.9% purity for optimal evaporation curves.",
+      label: "Carrier Purity"
+    }
+  ];
 
   return (
-    <section ref={containerRef} className="eco-section">
-      <div className="eco-header">
-        <h2 className="eco-title">The Olfactory Ecosystem</h2>
-        <span className="eco-subtitle">ARCHITECTURAL MAPPING OF SCENT LAYERS</span>
-      </div>
-
-      <div className="eco-container">
+    <section className="ingredients-section sg-page py-24">
+      <div className="container max-w-7xl mx-auto px-6 text-center">
         
-        {/* Left Text Items */}
-        <div className="eco-text-column left-text">
-          <div className="eco-text-item mt-12">
-            <h3>TOP NOTES</h3>
-            <span className="eco-label">Volatile Impact</span>
-            <p>Citrus and herbaceous molecules that define the first 15 minutes of experience.</p>
-          </div>
-          <div className="eco-text-item mt-32">
-            <h3>HEART NOTES</h3>
-            <span className="eco-label">Core Identity</span>
-            <p>Floral and spicy compounds forming the soul of the fragrance for 4-6 hours.</p>
-          </div>
-        </div>
+        <span className="ingredients-eyebrow">ARCHITECTURAL MAPPING OF SCENT LAYERS</span>
+        <h2 className="ingredients-heading">The Olfactory Ecosystem</h2>
+        <p className="ingredients-subtitle">Understanding the structure of a fragrance.</p>
 
-        {/* Central Diagram */}
-        <div className="eco-diagram">
-          <div className="eco-layer-block zone-a" style={{ backgroundImage: `url(${zoneA})` }}>
-            <span>ZONE A</span>
-          </div>
-          <div className="eco-layer-block zone-b" style={{ backgroundImage: `url(${zoneB})` }}>
-            <span>ZONE B</span>
-          </div>
-          <div className="eco-layer-block zone-c" style={{ backgroundImage: `url(${zoneC})` }}>
-            <span>ZONE C</span>
-          </div>
-        </div>
-
-        {/* Right Text Items */}
-        <div className="eco-text-column right-text">
-          <div className="eco-text-item mt-24">
-            <h3>BASE NOTES</h3>
-            <span className="eco-label">Structural Foundation</span>
-            <p>Heavy molecules like Musks and Resins providing longevity and sillage.</p>
-          </div>
-          <div className="eco-text-item mt-32">
-            <h3>SOLVENTS</h3>
-            <span className="eco-label">Carrier Purity</span>
-            <p>Denatured ethanol of 99.9% purity for optimal evaporation curves.</p>
-          </div>
+        <div className="ingredients-grid mt-16">
+          {ingredients.map((item) => (
+            <div key={item.id} className="ingredient-card">
+              <div className="ingredient-image-wrapper">
+                <img src={item.image} alt={item.title} className="ingredient-image" />
+              </div>
+              <span className="fs-xs mb-1 text-secondary" style={{letterSpacing: '0.1em'}}>{item.label}</span>
+              <h4 className="ingredient-title">{item.title}</h4>
+              <p className="ingredient-desc">{item.desc}</p>
+            </div>
+          ))}
         </div>
 
       </div>

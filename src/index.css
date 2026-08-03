@@ -16,7 +16,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 80px; /* Offset for the fixed header */
   overflow-x: hidden;
 }
@@ -203,4 +202,22 @@ img {
 
 .mask-blob:hover {
   border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}
+
+/* Old Hero Title Text Reveal Animation */
+.hero-title-line {
+  display: block;
+  overflow: hidden;
+}
+.hero-text-reveal {
+  display: inline-block;
+  animation: revealText 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  transform: translateY(120%);
+  opacity: 0;
+}
+@keyframes revealText {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

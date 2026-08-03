@@ -1,11 +1,11 @@
 import React from 'react';
 import './OlfactoryHouses.css';
-import img1 from '../assets/6.png';
-import img2 from '../assets/2.png';
-import img3 from '../assets/3.png';
-import img4 from '../assets/4.png';
+import img1 from '../assets/oud.png';
+import img2 from '../assets/floww.png';
+import img3 from '../assets/Amb.png';
+import img4 from '../assets/musk.png';
 // Reusing img1 for the 5th item as discussed in the plan
-import img5 from '../assets/1.png'; 
+import img5 from '../assets/gourmand.png'; 
 
 export default function OlfactoryHouses() {
   const families = [

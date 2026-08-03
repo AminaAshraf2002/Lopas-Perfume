@@ -1,107 +1,129 @@
-.process-cards-section {
-  background-color: #fdfdfc;
-  padding: 2rem 0 8rem 0; /* Reduced top padding */
-  margin-top: -80px;
+.promise-section {
+  background-color: var(--sg-bg, #f4f3f0);
+  padding: 1rem 0 4rem 0;
 }
 
-.process-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  align-items: flex-start;
-  margin-top: 4rem;
-}
-
-.process-card {
-  border: 1px solid #f0f0f0;
-  padding: 3rem 2rem;
+.promise-container {
   display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  color: #fff; /* Ensure all text inside is white */
+  min-height: 70vh;
+  background-color: var(--sg-bg, #f4f3f0);
 }
 
-/* Dark overlay for text readability */
-.process-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Left Side */
+.promise-left-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.promise-image-wrapper {
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.promise-image {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
-  z-index: 1;
+  object-fit: cover;
 }
 
-/* Make sure content is above overlay */
-.process-icon, .process-step-num, .process-step-title, .process-step-desc {
-  position: relative;
-  z-index: 2;
-  color: #fff; /* Force white color for all text elements */
+.author-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #777; /* placeholder for face */
+  background-image: url('https://i.pravatar.cc/100?img=5'); /* subtle placeholder face */
+  background-size: cover;
 }
 
-/* Staggering the cards vertically to match screenshot exactly */
-.card-1 {
-  height: 380px;
-  margin-top: 0;
+.author-details {
+  display: flex;
+  flex-direction: column;
 }
 
-.card-2 {
-  height: 340px;
-  margin-top: 40px;
+.author-name {
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
-.card-3 {
-  height: 300px;
-  margin-top: 80px;
-}
-
-.card-4 {
-  height: 260px;
-  margin-top: 120px;
-}
-
-.process-icon {
-  margin-bottom: 2rem;
-}
-
-.process-step-num {
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
+.author-stars {
+  color: #d4af37;
+  font-size: 0.9rem;
   letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+
+/* Right Side */
+.promise-right {
+  flex: 1;
+  padding: 4rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--sg-bg, #f4f3f0);
+}
+
+.promise-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #a89476;
+  margin-bottom: 2.5rem;
   text-transform: uppercase;
-  margin-bottom: 1rem;
 }
 
-.process-step-title {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
+.promise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
-.process-step-desc {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  line-height: 1.6;
+.promise-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
-@media (max-width: 1024px) {
-  .process-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+.promise-icon {
+  color: #1a1a1a;
+  padding-top: 2px;
+}
+
+.promise-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.promise-item-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--sg-text);
+  margin: 0;
+}
+
+.promise-item-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+  .promise-container {
+    flex-direction: column;
   }
-  .card-1, .card-2, .card-3, .card-4 {
-    height: auto;
-    margin-top: 0;
+  .promise-left-container {
+    padding: 3rem 2rem 0 2rem;
   }
-}
-
-@media (max-width: 640px) {
-  .process-cards-grid {
-    grid-template-columns: 1fr;
+  .promise-right {
+    padding: 4rem 2rem;
   }
 }

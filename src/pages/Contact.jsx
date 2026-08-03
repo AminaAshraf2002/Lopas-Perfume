@@ -5,7 +5,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import TrustStrip from '../components/TrustStrip';
 import contactImg from '../assets/contact.png';
-import bannerImg from '../assets/banner.png';
 import './Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -27,7 +26,6 @@ export default function Contact() {
   const wordRefs = useRef([]);
   const ruleRef = useRef(null);
   const signalRef = useRef(null);
-  const btnRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -66,54 +64,29 @@ export default function Contact() {
       }
     );
 
-    // Magnetic submit button
-    const btn = btnRef.current;
-    let quickX, quickY;
-    if (btn) {
-      quickX = gsap.quickTo(btn, 'x', { duration: 0.5, ease: 'power3' });
-      quickY = gsap.quickTo(btn, 'y', { duration: 0.5, ease: 'power3' });
-    }
-    const handleMove = (e) => {
-      if (!btn) return;
-      const rect = btn.getBoundingClientRect();
-      const relX = e.clientX - rect.left - rect.width / 2;
-      const relY = e.clientY - rect.top - rect.height / 2;
-      quickX(relX * 0.3);
-      quickY(relY * 0.4);
-    };
-    const handleLeave = () => {
-      quickX(0);
-      quickY(0);
-    };
-    btn?.addEventListener('mousemove', handleMove);
-    btn?.addEventListener('mouseleave', handleLeave);
-
     return () => {
       tl.kill();
       signalTween.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      btn?.removeEventListener('mousemove', handleMove);
-      btn?.removeEventListener('mouseleave', handleLeave);
+      ScrollTrigger.getAll().forEach((t) => t.revert());
     };
   }, []);
 
   const heroWords = ['Start', 'a', 'brief'];
 
   return (
-    <div className="contact-page">
-      {/* signature scroll motif: a line that fills as the page is read */}
+    <div className="sg-page contact-page-wrapper">
       <div className="signal-track" aria-hidden="true">
         <div className="signal-fill" ref={signalRef}></div>
       </div>
 
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION (RESTORED) */}
       <section className="contact-hero" ref={heroRef}>
         <div className="contact-hero-bg">
           <div
             className="contact-hero-overlay"
             style={{
               backgroundImage:
-                `linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.35) 100%), url(${contactImg})`
+                `linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%), url(${contactImg})`
             }}
           ></div>
         </div>
@@ -140,85 +113,54 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* 2. THE FORM CARD */}
-      <section className="contact-form-section">
-        <div className="contact-form-container">
-          <div className="contact-form-left" data-aos="fade-right">
-            <h2 className="contact-form-title">
-              Start Your Private Label
-              <br />
-              Journey.
-            </h2>
-            <p className="contact-form-subtitle">
-              Partner with the industrial leader in luxury perfumery. Let's engineer your legacy.
+      {/* 2. FORM SECTION WITH WATERMARK (NEW SAGE DESIGN) */}
+      <section className="sg-contact-form-wrapper">
+        <div className="sg-watermark-bg">inquire</div>
+        
+        <div className="sg-contact-container">
+          <div className="sg-contact-left" data-aos="fade-right">
+            <span className="sg-eyebrow" style={{color: 'var(--sg-text)'}}>DUBAI, UNITED ARAB EMIRATES</span>
+            <h2 className="sg-section-title">Start Your Private Label<br/>Journey.</h2>
+            <p className="sg-section-desc" style={{ maxWidth: '400px', marginLeft: 0 }}>
+              Whether you need to replicate a discontinued classic or build an entirely new fragrance line from scratch, our laboratory is ready. Drop your details below and we will get back to you with timelines and process overviews.
             </p>
-
-            <form onSubmit={handleSubmit} className="contact-form-grid">
-              <div className="form-group-row">
-                <div className="form-input-container">
-                  <label>COMPANY NAME</label>
-                  <input type="text" name="company" value={formData.company} onChange={handleChange} required />
-                </div>
-                <div className="form-input-container">
-                  <label>WORK EMAIL</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-                </div>
-              </div>
-
-              <div className="form-group-row">
-                <div className="form-input-container">
-                  <label>YOUR NAME</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-                </div>
-                <div className="form-input-container">
-                  <label>PHONE NO.</label>
-                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} />
-                </div>
-              </div>
-
-              <div className="form-group-row">
-                <div className="form-input-container">
-                  <label>SERVICE</label>
-                  <select name="service" value={formData.service} onChange={handleChange} required>
-                    <option value="" disabled></option>
-                    <option value="Private label">Private label</option>
-                    <option value="Contract manufacturing">Contract manufacturing</option>
-                    <option value="Bespoke formulation">Bespoke formulation</option>
-                    <option value="Bulk fragrance oil">Bulk fragrance oil</option>
-                  </select>
-                </div>
-                <div className="form-input-container">
-                  <label>VOLUME</label>
-                  <select name="volume" value={formData.volume} onChange={handleChange} required>
-                    <option value="" disabled></option>
-                    <option value="Under 1,000 units">Under 1,000 units</option>
-                    <option value="1,000 - 5,000 units">1,000 - 5,000 units</option>
-                    <option value="5,000 - 10,000 units">5,000 - 10,000 units</option>
-                    <option value="10,000+ units">10,000+ units</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="form-input-container">
-                <label>PROJECT BRIEF</label>
-                <textarea name="brief" value={formData.brief} onChange={handleChange} rows="4" required></textarea>
-              </div>
-
-              <button type="submit" className="contact-submit-btn" ref={btnRef}>
-                <span>INITIATE COLLABORATION</span>
-              </button>
-            </form>
           </div>
-
-          <div className="contact-form-right" data-aos="fade-left">
-            <div className="contact-image-wrapper">
-              <img src={bannerImg} alt="LOPAZ Perfume" className="contact-feature-img" />
-            </div>
+          
+          <div className="sg-contact-right" data-aos="fade-left">
+            <form onSubmit={handleSubmit} className="sg-form">
+              <div className="sg-form-group">
+                <input type="text" name="name" placeholder="Full Name*" required onChange={handleChange} />
+              </div>
+              <div className="sg-form-group">
+                <input type="text" name="company" placeholder="Company / Brand Name*" required onChange={handleChange} />
+              </div>
+              <div className="sg-form-row">
+                <div className="sg-form-group half">
+                  <input type="email" name="email" placeholder="Email Address*" required onChange={handleChange} />
+                </div>
+                <div className="sg-form-group half">
+                  <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} />
+                </div>
+              </div>
+              <div className="sg-form-group">
+                <select name="service" required onChange={handleChange} defaultValue="">
+                  <option value="" disabled>Select Service Needed*</option>
+                  <option value="duplication">Fragrance Duplication</option>
+                  <option value="new_creation">New Creation</option>
+                  <option value="bulk_oil">Bulk Oil Supply</option>
+                  <option value="full_turnkey">Full Turnkey Manufacturing</option>
+                </select>
+              </div>
+              <div className="sg-form-group">
+                <textarea name="brief" placeholder="Tell us about your project...*" rows="4" required onChange={handleChange}></textarea>
+              </div>
+              <button type="submit" className="sg-btn" style={{ marginTop: '1rem' }}>SUBMIT INQUIRY</button>
+            </form>
           </div>
         </div>
       </section>
 
-      {/* 3. WHAT HAPPENS NEXT SECTION */}
+      {/* 3. WHAT HAPPENS NEXT SECTION (RESTORED) */}
       <section className="contact-next-section">
         <div className="container" style={{ maxWidth: '1000px' }}>
           <div className="contact-centered-header" data-aos="fade-up">

@@ -1,26 +1,28 @@
-import img1 from '../assets/5.png';
-import img2 from '../assets/2.png';
-import img3 from '../assets/3.png';
-import img4 from '../assets/4.png';
-import img5 from '../assets/5.png';
-import img6 from '../assets/6.png';
-import img7 from '../assets/7.png';
-import img8 from '../assets/8.png';
+import imgOud from '../assets/oud.png';
+import imgRose from '../assets/floral.png';
+import imgAmber from '../assets/Amb.png';
+import imgVelvet from '../assets/musk.png';
+import imgVanila from '../assets/gourmand.png';
+import imgBlackash from '../assets/blackash.png';
+import imgVelisse from '../assets/velisse.png';
+import imgAventra from '../assets/aventra.png';
+import imgBlackSafron from '../assets/black safron.png';
+import imgPink from '../assets/pink.png';
 
 // Reusing existing images for now to represent the products
 export const products = [
-  { id: '01', name: 'Golden Emir', family: 'Amber', price: 320, img: img1 },
-  { id: '02', name: 'Cavalier Oud', family: 'Oud', price: 380, img: img2 },
-  { id: '03', name: 'Royal Ember', family: 'Amber', price: 340, img: img3 },
-  { id: '04', name: 'Black Musc', family: 'Musk', price: 310, img: img4 },
-  { id: '05', name: 'Rose Desire', family: 'Floral', price: 290, img: img5 },
-  { id: '06', name: 'Rosemoir', family: 'Floral', price: 330, img: img6 },
-  { id: '07', name: 'Velvet Femme', family: 'Floral', price: 295, img: img7 },
-  { id: '08', name: 'Velora Blanc', family: 'Musk', price: 275, img: img8 },
-  { id: '09', name: 'Cassian', family: 'Oud', price: 285, img: img1 },
-  { id: '10', name: 'Wanted', family: 'Oud', price: 280, img: img2 },
-  { id: '11', name: 'Vanilla Powdery', family: 'Gourmand', price: 265, img: img3 },
-  { id: '12', name: 'Pink Elixir', family: 'Gourmand', price: 270, img: img4 }
+  { id: '01', name: 'Golden Emir', family: 'Amber', price: 320, img: imgAmber },
+  { id: '02', name: 'Cavalier Oud', family: 'Oud', price: 380, img: imgOud },
+  { id: '03', name: 'Royal Ember', family: 'Amber', price: 340, img: imgBlackSafron },
+  { id: '04', name: 'Black Musc', family: 'Musk', price: 310, img: imgBlackash },
+  { id: '05', name: 'Rose Desire', family: 'Floral', price: 290, img: imgRose },
+  { id: '06', name: 'Rosemoir', family: 'Floral', price: 330, img: imgRose },
+  { id: '07', name: 'Velvet Femme', family: 'Floral', price: 295, img: imgVelvet },
+  { id: '08', name: 'Velora Blanc', family: 'Musk', price: 275, img: imgVelisse },
+  { id: '09', name: 'Cassian', family: 'Oud', price: 285, img: imgAventra },
+  { id: '10', name: 'Wanted', family: 'Oud', price: 280, img: imgOud },
+  { id: '11', name: 'Vanilla Powdery', family: 'Gourmand', price: 265, img: imgVanila },
+  { id: '12', name: 'Pink Elixir', family: 'Gourmand', price: 270, img: imgPink }
 ];
 
 export const families = [
@@ -31,7 +33,7 @@ export const families = [
     subtitle: 'Resin & smoke', 
     description: 'Agarwood, leather and smoked cedar. The heaviest thing we make.',
     notes: 'Oud · Leather · Birch Tar · Smoked Cedar',
-    img: img2
+    img: imgOud
   },
   { 
     id: 'floral', 
@@ -40,7 +42,7 @@ export const families = [
     subtitle: 'Rose & tuberose', 
     description: 'Damask rose and tuberose kept dark — floral, never pretty.',
     notes: 'Damask Rose · Tuberose · Jasmine Sambac · Peony',
-    img: img5
+    img: imgRose
   },
   { 
     id: 'amber', 
@@ -49,7 +51,7 @@ export const families = [
     subtitle: 'Warmth & spice', 
     description: 'Saffron, labdanum and honeyed resin over dry wood.',
     notes: 'Saffron · Labdanum · Amberwood · Benzoin',
-    img: img3
+    img: imgAmber
   },
   { 
     id: 'musk', 
@@ -58,7 +60,7 @@ export const families = [
     subtitle: 'Skin & linen', 
     description: 'Iris, ambergris and white musk. Worn close, noticed late.',
     notes: 'White Musk · Iris · Ambergris · Cashmeran',
-    img: img4
+    img: imgVelvet
   },
   { 
     id: 'gourmand', 
@@ -67,7 +69,7 @@ export const families = [
     subtitle: 'Vanilla & praline', 
     description: 'Bourbon vanilla, tonka and praline — powdery rather than sugary.',
     notes: 'Bourbon Vanilla · Tonka Bean · Praline · Heliotrope',
-    img: img8
+    img: imgVanila
   }
 ];
 

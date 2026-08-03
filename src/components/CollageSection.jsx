@@ -1,7 +1,7 @@
 import React from 'react';
 import './CollageSection.css';
 import { Link } from 'react-router-dom';
-import imgLeft from '../assets/banner1.png';
+import imgLeft from '../assets/banner0.png';
 import imgTop from '../assets/banner2.png';
 import imgBottom from '../assets/banner3.png';
 
