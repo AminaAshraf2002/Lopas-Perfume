@@ -200,6 +200,41 @@ export default function ThreeHero() {
     }
   }, { dependencies: [videoElement, isMobile], scope: containerRef });
 
+  // Force reload the video tag whenever mobile switch triggers to reload the new video stream
+  useEffect(() => {
+    if (videoElement) {
+      videoElement.load();
+    }
+  }, [isMobile, videoElement]);
+
+  // Unlock video decoder on mobile browsers (especially iOS Safari) by playing and pausing it
+  useEffect(() => {
+    if (!videoElement) return;
+
+    const unlock = () => {
+      videoElement.play()
+        .then(() => {
+          videoElement.pause();
+          window.removeEventListener('touchstart', unlock);
+          window.removeEventListener('click', unlock);
+        })
+        .catch((e) => {
+          console.log('Video decode unlock deferred until user interaction:', e);
+        });
+    };
+
+    window.addEventListener('touchstart', unlock);
+    window.addEventListener('click', unlock);
+    
+    // Try to unlock immediately (might succeed since video is muted)
+    unlock();
+
+    return () => {
+      window.removeEventListener('touchstart', unlock);
+      window.removeEventListener('click', unlock);
+    };
+  }, [videoElement]);
+
   const sprayAudioRef = useRef(new Audio('https://upload.wikimedia.org/wikipedia/commons/e/e0/Deodorant_spray_short.ogg'));
   const hasPlayedSpray = useRef(false);
 
@@ -268,7 +303,7 @@ export default function ThreeHero() {
         loop
         playsInline
         preload="auto"
-        style={{ display: 'none' }}
+        style={{ position: 'absolute', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
       />
 
       <div className="th-canvas-container">

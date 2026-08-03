@@ -208,6 +208,7 @@
   .mobile-menu-btn {
     display: block;
     z-index: 200;
+    color: #000 !important; /* Force hamburger menu to be black even on transparent headers */
   }
   
   .logo-container {
