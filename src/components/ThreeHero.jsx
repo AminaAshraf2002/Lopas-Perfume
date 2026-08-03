@@ -8,7 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ThreeHero.css';
 
 import video1 from '../assets/hero9_compressed.mp4';
-import mobileVideo from '../assets/mobile.MOV';
+import mobileVideo from '../assets/mobile_compressed.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
