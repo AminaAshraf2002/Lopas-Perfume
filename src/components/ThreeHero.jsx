@@ -7,22 +7,11 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ThreeHero.css';
 
-import video1 from '../assets/hero9_compressed.mp4';
-import mobileVideo from '../assets/mobile_compressed.mp4';
+import video1 from '../assets/hero8_scrub.mp4';
+import mobileVideo from '../assets/mobile_scrub.mp4';
+import logoImg from '../assets/logg.png';
 
 gsap.registerPlugin(ScrollTrigger);
-
-// FIX 6: by default ScrollTrigger re-measures pin start/end whenever it
-// detects a layout change (images loading, fonts swapping in, other
-// sections resizing below the hero). If that recalculation happens WHILE
-// the user is scrolling through the pinned hero, the same scroll position
-// suddenly maps to a different progress value — which can jump backward
-// and drag the video target back with it (this is what produced "reaches
-// Chapter III then snaps back to an earlier scene"). Restricting refresh
-// events to page-load moments only stops mid-scroll recalculation.
-ScrollTrigger.config({
-  autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
-});
 
 // ---- Optional: overlay text per scroll-progress range ----
 // Edit these to match your copy. `from`/`to` are 0–1 scroll progress values
@@ -116,10 +105,15 @@ export default function ThreeHero() {
   const [inView, setInView] = useState(true);
   const [videoElement, setVideoElement] = useState(null);
   const [visibleSlideIdx, setVisibleSlideIdx] = useState(0);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   // ---- Mobile detection ----
   useEffect(() => {
-    setVideoElement(videoRef.current);
+    const el = videoRef.current;
+    setVideoElement(el);
+    if (el && el.readyState >= 2) {
+      setIsVideoReady(true);
+    }
 
     const checkPerf = () => setIsMobile(window.innerWidth <= 768);
     checkPerf();
@@ -146,51 +140,33 @@ export default function ThreeHero() {
     return () => observer.disconnect();
   }, []);
 
-  // ---- FIX 1: wait for the video to be FULLY buffered before enabling scrub ----
-  // Previously the trigger armed on `loadedmetadata`, which only guarantees
-  // duration/dimensions are known — not that the file is downloaded. Seeking
-  // into an unbuffered region stalls on the last decoded frame, which is why
-  // the tail of the scroll (last ~7-9%) appeared to "not show."
+  // ---- ScrollTrigger configuration ----
   useGSAP(() => {
     if (!videoElement) return;
 
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top top',
-      end: '+=300%', // Reduced from 800% so it scrolls much faster
+      end: '+=300%', // pinned height scroll duration
       pin: true,
-      scrub: true,
-      anticipatePin: 1, // removes the jump/snap right at pin start/end
-      fastScrollEnd: true, // handles fast scroll bursts near boundaries gracefully
+      scrub: 0.5, // Damped scroll progress for smooth scrubbing
+      anticipatePin: 1,
+      fastScrollEnd: true,
       preventOverlaps: true,
       onUpdate: (self) => {
-        // FIX 4: clamp progress — overscroll/rubber-banding at the very
-        // top or bottom of the pin can briefly report progress outside
-        // 0–1, which yanks the video target backward and reads as
-        // "snapping back to the previous scene."
         const p = Math.min(Math.max(self.progress, 0), 1);
         scrollProgress.current = p;
         if (videoElement.duration) {
-          // FIX 2: don't set currentTime directly here — just record the
-          // target. The actual seek happens in useFrame below, damped.
-          // We clamp the maximum time slightly below the true duration (0.05s)
-          // because seeking to the exact final millisecond of an MP4/MOV can
-          // cause the decoder to freeze or snap backwards.
           const safeDuration = Math.max(0, videoElement.duration - 0.05);
           targetTime.current = p * safeDuration;
+          // Seek directly! H.264 intra keyframes make this buttery smooth.
+          videoElement.currentTime = targetTime.current;
         }
       },
     });
 
-    // FIX 7: measurements taken at creation time can still be off if
-    // fonts or images elsewhere on the page haven't finished loading yet
-    // (both change document height). Do ONE deliberate refresh once
-    // everything is settled, so the pin's start/end are locked in
-    // correctly before the user starts scrolling. Combined with FIX 6
-    // (restricting auto-refresh), this is the only refresh that happens.
     const lockInMeasurements = () => ScrollTrigger.refresh();
     if (document.readyState === 'complete') {
-      // page already loaded by the time video finished buffering
       requestAnimationFrame(lockInMeasurements);
     } else {
       window.addEventListener('load', lockInMeasurements, { once: true });
@@ -203,6 +179,7 @@ export default function ThreeHero() {
   // Force reload the video tag whenever mobile switch triggers to reload the new video stream
   useEffect(() => {
     if (videoElement) {
+      setIsVideoReady(false);
       videoElement.load();
     }
   }, [isMobile, videoElement]);
@@ -215,7 +192,6 @@ export default function ThreeHero() {
       videoElement.playbackRate = 0;
       videoElement.play()
         .then(() => {
-          // Success! Keep it in the "playing" state at 0 speed so iOS updates the WebGL texture
           window.removeEventListener('touchstart', unlock);
           window.removeEventListener('click', unlock);
         })
@@ -226,8 +202,6 @@ export default function ThreeHero() {
 
     window.addEventListener('touchstart', unlock);
     window.addEventListener('click', unlock);
-    
-    // Try to unlock immediately (might succeed since video is muted)
     unlock();
 
     return () => {
@@ -239,32 +213,6 @@ export default function ThreeHero() {
   const sprayAudioRef = useRef(new Audio('https://upload.wikimedia.org/wikipedia/commons/e/e0/Deodorant_spray_short.ogg'));
   const hasPlayedSpray = useRef(false);
 
-  // ---- FIX 3: damped seeking loop, guarded against overlapping seeks ----
-  // Runs every frame regardless of Canvas frameloop state, since scrubbing
-  // should keep working even if you pause 3D rendering while off-screen.
-  useEffect(() => {
-    if (!videoElement) return;
-    let rafId;
-
-    const tick = () => {
-      if (!videoElement.seeking) {
-        // If we are at the absolute bottom of the scroll, force the exact target time
-        // regardless of the tiny difference, to guarantee the final scene plays.
-        if (scrollProgress.current >= 0.999 && videoElement.currentTime !== targetTime.current) {
-          videoElement.currentTime = targetTime.current;
-        } else {
-          const diff = targetTime.current - videoElement.currentTime;
-          if (Math.abs(diff) > 0.005) {
-            videoElement.currentTime += diff * 0.15;
-          }
-        }
-      }
-      rafId = requestAnimationFrame(tick);
-    };
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [videoElement]);
-
   // ---- Track which text slide should be visible based on scroll progress & play spray sound ----
   useEffect(() => {
     if (isMobile) return;
@@ -274,17 +222,14 @@ export default function ThreeHero() {
       const idx = SLIDES.findIndex((s) => p >= s.from && p <= s.to);
       setVisibleSlideIdx(idx);
 
-      // Play spraying sound when entering the second slide (index 1)
       if (idx === 1) {
         if (!hasPlayedSpray.current) {
           sprayAudioRef.current.currentTime = 0;
-          // Set volume slightly lower for comfort
           sprayAudioRef.current.volume = 0.5;
-          sprayAudioRef.current.play().catch((e) => console.log('Spray audio blocked by browser policies until interaction:', e));
+          sprayAudioRef.current.play().catch((e) => console.log('Spray audio blocked by browser policies:', e));
           hasPlayedSpray.current = true;
         }
       } else {
-        // Reset when user scrolls away from slide 2, so it can play again when returning
         hasPlayedSpray.current = false;
       }
 
@@ -305,10 +250,16 @@ export default function ThreeHero() {
         playsInline
         autoPlay
         preload="auto"
+        onLoadedData={() => {
+          setIsVideoReady(true);
+          if (videoRef.current) {
+            videoRef.current.currentTime = 0;
+          }
+        }}
         style={{ position: 'absolute', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
       />
 
-      <div className="th-canvas-container">
+      <div className="th-canvas-container" style={{ opacity: isVideoReady ? 1 : 0, transition: 'opacity 0.8s ease' }}>
         <Canvas
           dpr={[1, 2]}
           frameloop={inView ? 'always' : 'demand'}
@@ -317,12 +268,40 @@ export default function ThreeHero() {
         >
           <color attach="background" args={['#050806']} />
           <Suspense fallback={null}>
-            {videoElement && <Scene video={videoElement} />}
+            {videoElement && isVideoReady && <Scene video={videoElement} />}
           </Suspense>
         </Canvas>
       </div>
 
-      <div className="th-progress-indicator">
+      {!isVideoReady && (
+        <div className="th-hero-loader">
+          <div className="th-loader-logo-container">
+            <img src={logoImg} alt="LOPAZ Logo" className="th-loader-logo" />
+            <div className="th-loader-bar">
+              <div className="th-loader-progress" />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Text overlays that fade in/out as scroll progress enters/leaves their range */}
+      <div className="th-text-container" style={{ opacity: isVideoReady ? 1 : 0, transition: 'opacity 0.8s ease' }}>
+        {SLIDES.map((slide, idx) => (
+          <div
+            key={idx}
+            className={`th-text-overlay ${visibleSlideIdx === idx ? 'th-text-visible' : ''}`}
+          >
+            <span className="th-eyebrow">{slide.eyebrow}</span>
+            <h1 className="th-heading">
+              <span className="th-heading-line1">{slide.heading1}</span>
+              <span className="th-heading-line2">{slide.heading2}</span>
+            </h1>
+            <p className="th-subtext">{slide.subtext}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="th-progress-indicator" style={{ opacity: isVideoReady ? 1 : 0, transition: 'opacity 0.8s ease' }}>
         <div className="th-scroll-cue">SCROLL</div>
         <div className="th-progress-line"></div>
       </div>

@@ -20,7 +20,13 @@ import blaaBg from '../assets/blaa.png';
 
 export default function Home() {
   useEffect(() => {
+    // Wait for components to fully mount and paint, then refresh all ScrollTriggers
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 250);
+
     return () => {
+      clearTimeout(timer);
       ScrollTrigger.getAll().forEach(t => t.revert());
     };
   }, []);
@@ -35,7 +41,6 @@ export default function Home() {
             {/* <SpinReveal /> */}
 
    
-      <ProcessSteps />
       <CollageSection />
       
       <div style={{ backgroundImage: `url(${blaaBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
@@ -45,6 +50,7 @@ export default function Home() {
 
       <HouseFacility />
       <OlfactoryHouses />
+      <ProcessSteps />
       <ParallaxCTA />
     </>
   );

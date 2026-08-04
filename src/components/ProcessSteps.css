@@ -1,30 +1,30 @@
 .promise-section {
   background-color: var(--sg-bg, #f4f3f0);
-  padding: 1rem 0 4rem 0;
+  padding: 0;
 }
 
 .promise-container {
   display: flex;
-  min-height: 70vh;
+  min-height: 75vh;
   background-color: var(--sg-bg, #f4f3f0);
+  width: 100%;
 }
 
 /* Left Side */
 .promise-left-container {
   flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
 }
 
 .promise-image-wrapper {
   width: 100%;
-  max-width: 450px;
-  aspect-ratio: 1 / 1;
-  border-radius: 16px;
+  height: 100%;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  box-shadow: none;
 }
 
 .promise-image {
@@ -121,7 +121,8 @@
     flex-direction: column;
   }
   .promise-left-container {
-    padding: 3rem 2rem 0 2rem;
+    padding: 0;
+    height: 45vh;
   }
   .promise-right {
     padding: 4rem 2rem;

@@ -6,31 +6,39 @@ import logoImg from '../assets/logg.png';
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
     const controlHeader = () => {
       if (typeof window !== 'undefined') {
-        if (window.scrollY > 50) {
-          setIsScrolled(true);
-        } else {
-          setIsScrolled(false);
-        }
+        const currentScrollY = window.scrollY;
+        const isHomePage = location.pathname === '/';
+        
+        // Pinned Hero height is ~400vh. On other pages, threshold is 50px.
+        const threshold = isHomePage ? window.innerHeight * 4 : 50;
 
-        if (window.scrollY > lastScrollY && window.scrollY > 100) { 
-          setIsHeaderVisible(false);
-        } else { 
-          setIsHeaderVisible(true);
+        if (currentScrollY > threshold) {
+          setIsPastHero(true);
+
+          // Hide when scrolling down, only show when scrolling up
+          if (currentScrollY > lastScrollY) {
+            setIsHeaderVisible(false);
+          } else {
+            setIsHeaderVisible(true);
+          }
+        } else {
+          setIsPastHero(false);
+          setIsHeaderVisible(true); // always show within the hero
         }
-        setLastScrollY(window.scrollY);
+        setLastScrollY(currentScrollY);
       }
     };
 
     window.addEventListener('scroll', controlHeader);
     return () => window.removeEventListener('scroll', controlHeader);
-  }, [lastScrollY]);
+  }, [lastScrollY, location.pathname]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -38,7 +46,7 @@ export default function Header() {
   }, [location]);
 
   return (
-    <header className={`app-header ${isHeaderVisible ? '' : 'header-hidden'} ${!isScrolled ? 'header-transparent' : ''}`}>
+    <header className={`app-header ${isHeaderVisible ? '' : 'header-hidden'} ${isPastHero ? 'header-past-hero' : 'header-transparent'}`}>
       {/* Mobile Hamburger Button */}
       <button 
         className="mobile-menu-btn" 
@@ -71,7 +79,7 @@ export default function Header() {
       
       <div className="logo-container">
         <Link to="/" className="logo-link">
-          <img src={logoImg} alt="LOPAZ" className="header-logo-image" style={{ height: '80px' }} />
+          <img src={logoImg} alt="LOPAZ" className="header-logo-image" />
         </Link>
       </div>
 

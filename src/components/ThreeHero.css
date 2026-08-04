@@ -69,10 +69,10 @@
 .th-eyebrow {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.80rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #a39682;
+  color: #ffffff;
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
@@ -85,7 +85,7 @@
 .th-heading-line1 {
   display: block;
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 500;
   color: #ffffff;
   letter-spacing: -0.02em;
@@ -94,7 +94,7 @@
 .th-heading-line2 {
   display: block;
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2.5rem, 5vw, 5rem);
   font-style: italic;
   font-weight: 300;
   color: #ebd9be;
@@ -104,7 +104,7 @@
 
 .th-subtext {
   font-family: var(--font-sans);
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   max-width: 400px;
 }
@@ -186,5 +186,80 @@
   }
   .th-heading-line2 {
     margin-left: 0;
+  }
+}
+
+/* Premium Loader styles */
+.th-hero-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: #050806;
+}
+
+.th-loader-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.th-loader-logo {
+  height: 90px;
+  opacity: 0.8;
+  animation: logo-pulse 2s infinite ease-in-out;
+  filter: brightness(0) invert(1);
+}
+
+.th-loader-bar {
+  width: 160px;
+  height: 2px;
+  background-color: rgba(235, 217, 190, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.th-loader-progress {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #ebd9be;
+  animation: loading-bar 1.5s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+@keyframes logo-pulse {
+  0% {
+    transform: scale(0.97);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+    filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.45));
+  }
+  100% {
+    transform: scale(0.97);
+    opacity: 0.6;
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
   }
 }

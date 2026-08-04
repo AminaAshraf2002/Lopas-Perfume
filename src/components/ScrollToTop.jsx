@@ -15,14 +15,14 @@ export default function ScrollToTop() {
     setTimeout(() => {
       window.scrollTo(0, 0);
       try {
+        ScrollTrigger.refresh();
+      } catch (e) { console.error("GSAP error", e); }
+      
+      try {
         AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
         AOS.refresh();
       } catch (e) { console.error("AOS error", e); }
-      
-      try {
-        ScrollTrigger.refresh();
-      } catch (e) { console.error("GSAP error", e); }
-    }, 100);
+    }, 150);
 
   }, [pathname]);
 

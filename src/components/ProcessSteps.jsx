@@ -49,8 +49,8 @@ export default function ProcessSteps() {
   ];
 
   return (
-    <section className="promise-section sg-page">
-      <div className="promise-container max-w-7xl mx-auto">
+    <section className="promise-section">
+      <div className="promise-container">
         
         {/* Left Side: Contained Image */}
         <div className="promise-left-container">
