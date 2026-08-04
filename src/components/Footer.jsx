@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="footer-brand">
             <h2 className="footer-logo">LOPAZ</h2>
             <p className="footer-desc">
-              Experience the art of fine fragrance. Hand-bottled in Paris, crafted with the world's most exquisite ingredients.
+              Experience the art of fine fragrance. Hand-bottled in UAE, crafted with the world's most exquisite ingredients.
             </p>
             <div className="footer-socials">
               <a href="#instagram" aria-label="Instagram">
