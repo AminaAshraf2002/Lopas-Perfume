@@ -152,8 +152,14 @@
 }
 
 @media (max-width: 992px) {
+  .production-section {
+    padding: 3rem 1rem !important; /* Decreased section horizontal padding on mobile */
+  }
+
   .production-grid-container {
     gap: 1rem !important;
+    padding-left: 0.5rem !important; /* Decreased container padding on mobile */
+    padding-right: 0.5rem !important;
   }
   
   .production-desc {
